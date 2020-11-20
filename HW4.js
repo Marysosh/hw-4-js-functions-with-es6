@@ -7,9 +7,7 @@
 
 */
 function splitAndMerge(string, separator) {
-  let words = string.split(" ");
-  let characters = words.map((item) => item.split("").join(separator););
-  return characters.join(" ");
+  return string.split(" ").map((item) => item.split("").join(separator)).join(" ");
 }
 
 /*
@@ -31,7 +29,7 @@ function convert(hash) {
 
 */
 function toCamelCase(words) {
-  let wordsArray = words.indexOf("-") === -1 ? words.split("_") : words.split("-");
+  let wordsArray = words.split("-").join("_").split("_");
   wordsArray = [wordsArray[0]].concat(wordsArray.slice(1).map((item) => item[0].toUpperCase() + item.slice(1)));
   return wordsArray.join("");
 }
@@ -44,8 +42,7 @@ function toCamelCase(words) {
 
 */
 function wordReverse(string) {
-  let wordsArray = string.split(" ").map( (item) => item.split("").reverse().join(""));
-  return wordsArray.join(" ");
+  return string.split(" ").map( (item) => item.split("").reverse().join("")).join(" ");
 }
 
 /*
@@ -58,7 +55,7 @@ function wordReverse(string) {
 function stringExpansion(string) {
   let currentNumber = 1;
   let result = "";
-  for (let char of string) {
+  for (const char of string) {
     if (!isNaN(Number(char))) {
       currentNumber = Number(char);
     } else {
